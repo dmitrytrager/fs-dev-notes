@@ -17,3 +17,5 @@ config :fs_dev, FsDev.Repo,
   database: "fs_dev_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :admin_basic_auth, realm: "Admin Area", username: "admin", password: "secret"

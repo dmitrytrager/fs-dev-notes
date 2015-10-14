@@ -40,3 +40,5 @@ config :fs_dev, FsDev.Repo,
   database: "fs_dev_dev",
   hostname: "localhost",
   pool_size: 10
+
+config :admin_basic_auth, realm: "Admin Area", username: "admin", password: "secret"

@@ -2,6 +2,7 @@ defmodule FsDev.Router do
   use FsDev.Web, :router
 
   pipeline :browser do
+    plug BasicAuth, use_config: :admin_basic_auth
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash

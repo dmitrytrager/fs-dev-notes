@@ -62,3 +62,7 @@ config :fs_dev, FsDev.Repo,
   adapter: Ecto.Adapters.Postgres,
   url: System.get_env("DATABASE_URL"),
   pool_size: 20
+
+config :admin_basic_auth, realm: "Admin Area",
+                          username: System.get_env("BASIC_AUTH_USER"),
+                          password: System.get_env("BASIC_AUTH_PASSWORD")
