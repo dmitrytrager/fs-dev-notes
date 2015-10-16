@@ -13,7 +13,7 @@ config :logger, level: :warn
 config :fs_dev, FsDev.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "postgres",
+  password: "",
   database: "fs_dev_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
