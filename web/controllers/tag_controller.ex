@@ -1,4 +1,4 @@
-defmodule FsDev.PageController do
+defmodule FsDev.TagController do
   use FsDev.Web, :controller
 
   def index(conn, _params) do
