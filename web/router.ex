@@ -19,6 +19,7 @@ defmodule FsDev.Router do
 
     get "/", TagController, :index
     resources "tags", TagController, only: [:index, :show]
+    resources "/notes", NoteController, only: [:index, :show]
   end
 
   # Other scopes may use custom stacks.
