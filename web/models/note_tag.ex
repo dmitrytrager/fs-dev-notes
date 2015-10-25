@@ -1,17 +1,14 @@
-defmodule FsDev.Tag do
+defmodule FsDev.NoteTag do
   use FsDev.Web, :model
 
-  schema "tags" do
-    field :name, :string
-    field :ref_count, :integer
-
-    has_many :note_tags, FsDev.NoteTag
-    has_many :notes, through: [:note_tags, :note]
+  schema "note_tags" do
+    belongs_to :note, FsDev.Note
+    belongs_to :tag, FsDev.Tag
 
     timestamps
   end
 
-  @required_fields ~w(name ref_count)
+  @required_fields ~w()
   @optional_fields ~w()
 
   @doc """
