@@ -1,10 +1,14 @@
 defmodule FsDev.TagController do
   use FsDev.Web, :controller
 
+  alias FsDev.Tag
+  alias FsDev.Note
+
   def index(conn, _params) do
-    conn
-    |> put_flash(:info, "Welcome to Phoenix, from flash info!")
-    |> render("index.html")
+    tags = Repo.all(Tag)
+    new_note = Note.changeset(%Note{})
+
+    render(conn, "index.html", tags: tags, new_note: new_note)
   end
 
   def show(conn, %{"tag" => tag}) do

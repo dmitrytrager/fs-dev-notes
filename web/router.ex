@@ -18,8 +18,10 @@ defmodule FsDev.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", TagController, :index
-    resources "tags", TagController, only: [:index, :show]
-    resources "/notes", NoteController, only: [:index, :show]
+    resources "notes", NoteController, only: [:create, :show]
+    resources "tags", TagController, only: [:index, :show] do
+      resources "notes", NoteController, only: [:index]
+    end
   end
 
   # Other scopes may use custom stacks.

@@ -14,5 +14,4 @@
 
 </ul>
 
-<%= link "Edit", to: note_path(@conn, :edit, @note) %>
-<%= link "Back", to: note_path(@conn, :index) %>
+<%= link "Back", to: tag_path(@conn, :index) %>

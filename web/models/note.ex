@@ -1,6 +1,9 @@
 defmodule FsDev.Note do
   use FsDev.Web, :model
 
+  alias FsDev.Tag
+  alias FsDev.NoteTag
+
   schema "notes" do
     field :title, :string
     field :url, :string
@@ -12,7 +15,7 @@ defmodule FsDev.Note do
   end
 
   @required_fields ~w(title url)
-  @optional_fields ~w(tags)
+  @optional_fields ~w()
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -23,11 +26,5 @@ defmodule FsDev.Note do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
-  end
-
-  after_insert :update_tags
-  def update_tags(changeset) do
-    changeset
-    |> Ecto.Changeset.put_change(:approved_at, nil)
   end
 end
