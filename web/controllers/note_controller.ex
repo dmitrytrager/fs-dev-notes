@@ -1,5 +1,6 @@
 defmodule FsDev.NoteController do
   use FsDev.Web, :controller
+  require Logger
 
   alias FsDev.Note
   alias FsDev.Tag

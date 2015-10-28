@@ -13,7 +13,7 @@
 <%= for tag <- @tags do %>
     <tr>
       <td><%= tag.name %></td>
-      <td><%= link tag.ref_count, tag_note_path(@conn, :index, tag) %></td>
+      <td><%= link Integer.to_string(tag.ref_count), to: tag_note_path(@conn, :index, tag) %></td>
     </tr>
 <% end %>
   </tbody>

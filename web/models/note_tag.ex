@@ -8,7 +8,7 @@ defmodule FsDev.NoteTag do
     timestamps
   end
 
-  @required_fields ~w()
+  @required_fields ~w(note_id tag_id)
   @optional_fields ~w()
 
   @doc """
