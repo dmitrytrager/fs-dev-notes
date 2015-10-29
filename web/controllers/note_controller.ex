@@ -85,22 +85,23 @@ defmodule FsDev.NoteController do
   end
 
   defp prepare_tags(conn, _) do
-    tag_list = String.split(String.strip(conn.params["tag_list"]), ",")
+    %{"note" => %{"tag_list" => tag_list}} = conn.params
 
-    tag_ids = Enum.map(&(String.strip(&1))) |> Enum.map(tag_list, fn tag_title ->
-      case Repo.get_by(Tag, title: tag_title) do
-        {nil} ->
-          case Repo.insert(Tag.changeset(%Tag{}, %{title: tag_title, ref_count: 1})) do
-            {:ok, tag} ->
-              tag.id
-          end
-        {tag} ->
-          case Repo.update(Tag.changeset(tag, %{ref_count: tag.ref_count + 1})) do
-            {:ok, tag} ->
-              tag.id
-          end
-      end
-    end)
+    tag_ids =
+      String.split(String.strip(tag_list), ",") |> Enum.map(&(String.strip(&1))) |> Enum.map(fn tag_title ->
+        case Repo.get_by(Tag, name: tag_title) do
+          nil ->
+            case Repo.insert(Tag.changeset(%Tag{}, %{name: tag_title, ref_count: 1})) do
+              {:ok, tag} ->
+                tag.id
+            end
+          tag ->
+            case Repo.update(Tag.changeset(tag, %{name: tag.ref_count + 1})) do
+              {:ok, tag} ->
+                tag.id
+            end
+        end
+      end)
 
     assign(conn, :tag_ids, tag_ids)
   end
