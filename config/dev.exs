@@ -35,8 +35,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :fs_dev, FsDev.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "emmakhayrullina",
-  password: "",
+  username: "postgres",
+  password: "postgres",
   database: "fs_dev_dev",
   hostname: "localhost",
   pool_size: 10
