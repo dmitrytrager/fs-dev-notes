@@ -1,22 +1,16 @@
-<h2>Listing tags</h2>
+<h2 class="page-title">Listing tags</h2>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Notes</th>
+<div class="tag-container">
+  <ul class="tag-list">
+    <%= for tag <- @tags do %>
+    <li class="tag-item">
+      <%= link to: tag_note_path(@conn, :index, tag), class: "tag-link" do %>
+        <%= tag.name %>
+        <span><%= Integer.to_string(tag.ref_count)%></span>
+      <%= end %>
+    </li>
+    <% end %>
+  </ul>
+</div>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for tag <- @tags do %>
-    <tr>
-      <td><%= tag.name %></td>
-      <td><%= link Integer.to_string(tag.ref_count), to: tag_note_path(@conn, :index, tag) %></td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
-
-<%= render FsDev.NoteView, "form.html", action: note_path(@conn, :create), changeset: @new_note %>
+<%= render FsDev.NoteView, "form.html", action: note_path(@conn, :create), changeset: @new_note%>

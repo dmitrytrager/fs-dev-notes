@@ -1,11 +1,13 @@
-<h2>Notes by '<%= @tag.name %>':</h2>
+<h2 class="page-title">Notes by '<%= @tag.name %>':</h2>
 
-<table class="table">
-  <tbody>
-<%= for note <- @notes do %>
-    <tr>
-      <td><%= link note.title, to: note.url %></td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
+<ul class="notes-list">
+  <%= for note <- @notes do %>
+  <li class="notes-item">
+    <%= link to: note.url, class: "notes-link" do %>
+      <%= note.title %>
+      <%#= link "Edit", to: note_path(@conn, :edit, note), class: "btn btn-default btn-xs" %>
+      <%#= link "Delete", to: note_path(@conn, :delete, note), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+    <%= end %>
+  </li>
+  <% end %>
+</ul>
