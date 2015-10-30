@@ -12,14 +12,15 @@
   </head>
 
   <body>
-    <div class="container" role="main">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-        </ul>
-        <span class="logo"></span>
+    <div class="header clearfix">
+      <div class="logo clearfix">
+        <div class="logo-img-wrapp">
+          <img class="logo-img" src="http://android.mobile-review.com/image/2014/03/Google-URL-Shortener-1.png">
+        </div>
+        <h1 class="logo-title">Insted of thousands books</h1>
       </div>
-
+    </div>
+    <div class="container" role="main">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
