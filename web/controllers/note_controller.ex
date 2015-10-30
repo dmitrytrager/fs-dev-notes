@@ -96,7 +96,7 @@ defmodule FsDev.NoteController do
                 tag.id
             end
           tag ->
-            case Repo.update(Tag.changeset(tag, %{name: tag.ref_count + 1})) do
+            case Repo.update(Tag.changeset(tag, %{ref_count: tag.ref_count + 1})) do
               {:ok, tag} ->
                 tag.id
             end
