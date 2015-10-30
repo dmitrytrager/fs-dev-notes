@@ -36,7 +36,7 @@ defmodule FsDev.NoteController do
 
         conn
         |> put_flash(:info, "Note created successfully.")
-        |> redirect(to: note_path(conn, :show, note))
+        |> redirect(to: tag_path(conn, :index))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
